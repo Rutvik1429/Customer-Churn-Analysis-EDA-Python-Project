@@ -8,24 +8,24 @@ The dataset used in this project is the Telco Customer Churn dataset, which cont
 
 # 🎯 Objective
 ## The key objectives of this project are:
-✅ To explore customer data and understand the distribution of features.
-✅ To preprocess data by handling missing values, incorrect data types, and converting categorical variables.
-✅ To visualize the relationships between customer attributes and churn behavior.
-✅ To uncover patterns and insights that contribute to customer churn.
-✅ To provide actionable insights that can help businesses improve customer retention.
+- ✅ To explore customer data and understand the distribution of features.
+- ✅ To preprocess data by handling missing values, incorrect data types, and converting categorical variables.
+- ✅ To visualize the relationships between customer attributes and churn behavior.
+- ✅ To uncover patterns and insights that contribute to customer churn.
+- ✅ To provide actionable insights that can help businesses improve customer retention.
 
 # 📂 Dataset Description
 ## The dataset includes the following fields:
-Customer information: gender, senior citizen, tenure, etc.
-Services: Internet, phone service, online backup, etc.
-Charges: monthly and total charges.
-Churn label: whether the customer has churned (Yes/No).
+- Customer information: gender, senior citizen, tenure, etc.
+- Services: Internet, phone service, online backup, etc.
+- Charges: monthly and total charges.
+- Churn label: whether the customer has churned (Yes/No).
 
 # 🔍 Data Cleaning and Preprocessing
-Missing values in the TotalCharges column were replaced with 0.
-Data types were converted to appropriate formats for analysis.
-The SeniorCitizen feature was transformed from numerical values (0, 1) to categorical labels (No, Yes) for better interpretability.
-The dataset was checked for inconsistencies and corrected where necessary.
+- Missing values in the TotalCharges column were replaced with 0.
+- Data types were converted to appropriate formats for analysis.
+- The SeniorCitizen feature was transformed from numerical values (0, 1) to categorical labels (No, Yes) for better interpretability.
+- The dataset was checked for inconsistencies and corrected where necessary.
 
 # 📊 Exploratory Data Analysis (EDA) Insights
 ## 1️⃣ Churn Distribution
@@ -54,8 +54,8 @@ plt.savefig("Percentage of Churned Customers.png", dpi=2000, bbox_inches="tight"
 plt.show()
 ```
 ![Churn distribution](https://github.com/Rutvik1429/Customer-Churn-Analysis-EDA-Python-Project/blob/main/visual_plot/Percentage%20of%20Churned%20Customers.png)
--From the pie chart visualization, it was observed that 25.54% of customers have churned, while the remaining are still active.
--This indicates that customer attrition is significant and requires attention.
+- From the pie chart visualization, it was observed that 25.54% of customers have churned, while the remaining are still active.
+- This indicates that customer attrition is significant and requires attention.
 
 ## 2️⃣ Tenure and Total Charges
 ```python
@@ -81,5 +81,5 @@ plt.savefig("Churned by Tenure.png", dpi=2000, bbox_inches="tight")
 plt.show()
 ```
 ![Tenure and Total Charges](https://github.com/Rutvik1429/Customer-Churn-Analysis-EDA-Python-Project/blob/main/visual_plot/Churned%20by%20Tenure.png)
--A deeper analysis revealed that customers with lower tenure and lower total charges are more likely to churn.
--Long-tenured customers tend to stay, suggesting loyalty increases over time.
+- A deeper analysis revealed that customers with lower tenure and lower total charges are more likely to churn.
+- Long-tenured customers tend to stay, suggesting loyalty increases over time.
