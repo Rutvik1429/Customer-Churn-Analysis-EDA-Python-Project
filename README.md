@@ -53,6 +53,6 @@ plt.savefig("Percentage of Churned Customers.png", dpi=2000, bbox_inches="tight"
 # Display the plot
 plt.show()
 ```
-
+![Churn distribution](https://github.com/Rutvik1429/Customer-Churn-Analysis-EDA-Python-Project/blob/main/visual_plot/Percentage%20of%20Churned%20Customers.png)
 
 
