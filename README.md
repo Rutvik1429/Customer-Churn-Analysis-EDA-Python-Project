@@ -186,8 +186,8 @@ plt.show()
 
 # 💡 Key Insights
 
-## 📌 Customers on month-to-month contracts are at the highest risk of churning.
-## 📌 Providing tech support, online security, and other services can enhance customer satisfaction and reduce churn.
-## 📌 Tenure plays a major role in customer retention; customers who stay longer are less likely to churn.
-## 📌 Senior citizens require special attention in retention strategies.
-## 📌 Offering annual or long-term contracts can improve customer loyalty.
+### 📌 Customers on month-to-month contracts are at the highest risk of churning.
+### 📌 Providing tech support, online security, and other services can enhance customer satisfaction and reduce churn.
+### 📌 Tenure plays a major role in customer retention; customers who stay longer are less likely to churn.
+### 📌 Senior citizens require special attention in retention strategies.
+### 📌 Offering annual or long-term contracts can improve customer loyalty.
