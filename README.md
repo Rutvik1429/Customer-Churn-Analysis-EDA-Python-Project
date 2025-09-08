@@ -83,3 +83,78 @@ plt.show()
 ![Tenure and Total Charges](https://github.com/Rutvik1429/Customer-Churn-Analysis-EDA-Python-Project/blob/main/visual_plot/Churned%20by%20Tenure.png)
 - A deeper analysis revealed that customers with lower tenure and lower total charges are more likely to churn.
 - Long-tenured customers tend to stay, suggesting loyalty increases over time.
+
+## 3️⃣ Senior Citizens and Churn
+```python
+# Create a crosstab to count churn occurrences by 'SeniorCitizen'
+ct = pd.crosstab(df["SeniorCitizen"], df["Churn"])
+
+# Convert counts to percentages within each 'SeniorCitizen' group
+ct_pct = ct.div(ct.sum(axis=1), axis=0) * 100
+
+# Plot a stacked bar chart
+# - kind="bar": create a bar plot
+# - stacked=True: stack the bars to show cumulative percentage
+# - figsize: set the size of the plot
+ax = ct_pct.plot(kind="bar", stacked=True, figsize=(3, 4))
+
+# Add title and labels
+plt.title("Churn by Senior Citizen (Stacked Bar Plot)")
+plt.ylabel("Percentage")
+
+# Add percentage labels to each bar
+for container in ax.containers:
+    ax.bar_label(container, fmt="%.1f%%", label_type="center")
+
+# Set x-axis tick labels: 0 → 'No', 1 → 'Yes'
+ax.set_xticks(range(len(ct_pct.index)))
+ax.set_xticklabels(["No", "Yes"])
+
+# Adjust legend to make it clear
+plt.legend(title="Churn", bbox_to_anchor=(0.9, 0.9))
+
+# Save the figure as a high-resolution PNG file
+# - dpi=2000 for clarity
+# - bbox_inches="tight" to remove unnecessary padding
+plt.savefig("Churn by SeniorCitizen(Stacked Bar Plot).png", dpi=2000, bbox_inches="tight")
+
+# Display the plot
+plt.show()
+```
+![Senior Citizens and Churn](https://github.com/Rutvik1429/Customer-Churn-Analysis-EDA-Python-Project/blob/main/visual_plot/Churn%20by%20SeniorCitizen(Stacke%20Bar%20plot).png)
+- Senior citizens are slightly more prone to churn compared to younger customers, which can be addressed by targeted services.
+
+## 4️⃣ Services Impacting Churn
+```python
+# Your selected columns
+service_cols = ['PhoneService', 'MultipleLines', 'InternetService',
+                'OnlineSecurity', 'OnlineBackup', 'DeviceProtection',
+                'TechSupport', 'StreamingTV', 'StreamingMovies']
+
+# Grid setup (3 columns per row)
+n_cols = 3
+n_rows = -(-len(service_cols) // n_cols)  # ceiling division
+
+fig, axes = plt.subplots(nrows=n_rows, ncols=n_cols, figsize=(15, 12))
+axes = axes.flatten()
+
+# Create countplots
+for i, col in enumerate(service_cols):
+    ax = sns.countplot(data=df, x=col, ax=axes[i],hue = "Churn")
+    axes[i].set_title(f"{col}", fontsize=12)
+    axes[i].tick_params(axis="x")
+
+    #  Add count labels on bars
+    for container in ax.containers:
+        ax.bar_label(container, fontsize=9)
+
+# Remove empty subplot spaces if needed
+for j in range(i+1, len(axes)):
+    fig.delaxes(axes[j])
+
+plt.tight_layout()
+plt.savefig("Subplots.png",dpi=2000 ,bbox_inches="tight")
+plt.show()
+```
+![Services Impacting Churn](https://github.com/Rutvik1429/Customer-Churn-Analysis-EDA-Python-Project/blob/main/visual_plot/Subplots.png)
+
