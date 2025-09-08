@@ -27,7 +27,32 @@ Data types were converted to appropriate formats for analysis.
 The SeniorCitizen feature was transformed from numerical values (0, 1) to categorical labels (No, Yes) for better interpretability.
 The dataset was checked for inconsistencies and corrected where necessary.
 
-### 📊 Exploratory Data Analysis (EDA) Insights
+# 📊 Exploratory Data Analysis (EDA) Insights
 ## 1️⃣ Churn Distribution
+```python
+# Set the size of the plot (width=3 inches, height=4 inches)
+plt.figure(figsize=(3, 4))
+
+# Group the data by 'Churn' and count the occurrences
+gp = df.groupby("Churn").agg({"Churn": "count"})
+
+# Create a pie chart
+# - Values to plot: the count of each churn category
+# - Labels: the unique churn categories (Yes/No)
+# - autopct: format to show percentage values with 2 decimal places
+plt.pie(gp["Churn"], labels=gp.index, autopct="%1.2f%%")
+
+# Add a title to the plot
+plt.title("Percentage of Churned Customers")
+
+# Save the plot as a high-resolution PNG file
+# - dpi=2000 ensures very high quality
+# - bbox_inches='tight' ensures no extra whitespace around the image
+plt.savefig("Percentage of Churned Customers.png", dpi=2000, bbox_inches="tight")
+
+# Display the plot
+plt.show()
+```
+
 
 
