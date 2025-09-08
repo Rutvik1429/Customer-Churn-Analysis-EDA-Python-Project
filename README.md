@@ -124,37 +124,70 @@ plt.show()
 ![Senior Citizens and Churn](https://github.com/Rutvik1429/Customer-Churn-Analysis-EDA-Python-Project/blob/main/visual_plot/Churn%20by%20SeniorCitizen(Stacke%20Bar%20plot).png)
 - Senior citizens are slightly more prone to churn compared to younger customers, which can be addressed by targeted services.
 
-## 4️⃣ Services Impacting Churn
+## 4️⃣ Customer Paymentmethod Churn
 ```python
-# Your selected columns
-service_cols = ['PhoneService', 'MultipleLines', 'InternetService',
-                'OnlineSecurity', 'OnlineBackup', 'DeviceProtection',
-                'TechSupport', 'StreamingTV', 'StreamingMovies']
+# Set the size of the plot (width=10 inches, height=4 inches)
+plt.figure(figsize=(10, 4))
 
-# Grid setup (3 columns per row)
-n_cols = 3
-n_rows = -(-len(service_cols) // n_cols)  # ceiling division
+# Create a count plot to show the number of customers by 'PaymentMethod'
+# - y="PaymentMethod": display categories on the y-axis
+# - hue="Churn": separate the bars by churn status (Yes/No)
+ax = sns.countplot(y="PaymentMethod", data=df, hue="Churn")
 
-fig, axes = plt.subplots(nrows=n_rows, ncols=n_cols, figsize=(15, 12))
-axes = axes.flatten()
+# Add labels on the bars to show the exact count values
+ax.bar_label(ax.containers[0])  # Labels for the first group (e.g., 'No')
+ax.bar_label(ax.containers[1])  # Labels for the second group (e.g., 'Yes')
 
-# Create countplots
-for i, col in enumerate(service_cols):
-    ax = sns.countplot(data=df, x=col, ax=axes[i],hue = "Churn")
-    axes[i].set_title(f"{col}", fontsize=12)
-    axes[i].tick_params(axis="x")
+# Add a title to the plot for clarity
+plt.title("Churned Customers by Payment Method")
 
-    #  Add count labels on bars
-    for container in ax.containers:
-        ax.bar_label(container, fontsize=9)
+# Adjust x-axis ticks if necessary (though here it's rotated just in case)
+plt.xticks(rotation=45)
 
-# Remove empty subplot spaces if needed
-for j in range(i+1, len(axes)):
-    fig.delaxes(axes[j])
+# Position the legend outside the plot for better readability
+plt.legend(bbox_to_anchor=(1, 1))
 
-plt.tight_layout()
-plt.savefig("Subplots.png",dpi=2000 ,bbox_inches="tight")
+# Save the plot as a high-resolution PNG file
+# - dpi=2000 ensures very sharp details
+# - bbox_inches="tight" removes extra whitespace
+plt.savefig("Churned Customers by PaymentMethod.png", dpi=2000, bbox_inches="tight")
+
+# Display the plot
 plt.show()
 ```
-![Services Impacting Churn](https://github.com/Rutvik1429/Customer-Churn-Analysis-EDA-Python-Project/blob/main/visual_plot/Subplots.png)
+![Customer Paymentmethod Churn](https://github.com/Rutvik1429/Customer-Churn-Analysis-EDA-Python-Project/blob/main/visual_plot/Churned%20Customers%20by%20Paymentmathod.png)
 
+## 5️⃣ Contract Types
+```python
+# Set the size of the plot (width=4 inches, height=4 inches)
+plt.figure(figsize=(4, 4))
+
+# Create a count plot to show the number of customers by 'Contract' type
+# - x="Contract": display contract categories on the x-axis
+# - hue="Churn": split the bars by churn status (Yes/No)
+ax = sns.countplot(x="Contract", data=df, hue="Churn")
+
+# Add labels on the bars to show the exact count for each contract type
+ax.bar_label(ax.containers[0])  # Labels for the first group (e.g., 'No')
+
+# Add a title to describe what the plot represents
+plt.title("Count of Customers by Contract")
+
+# Save the plot as a high-resolution PNG file
+# - dpi=2000 ensures sharp image quality
+# - bbox_inches="tight" removes unnecessary whitespace around the image
+plt.savefig("Count of Customer By Contract.png", dpi=2000, bbox_inches="tight")
+
+# Display the plot
+plt.show()
+```
+![Contract Types](https://github.com/Rutvik1429/Customer-Churn-Analysis-EDA-Python-Project/blob/main/visual_plot/Count%20of%20Customer%20By%20Contract.png)
+- Customers with month-to-month contracts exhibit higher churn rates, whereas those with one or two-year contracts tend to stay longer.
+
+# 💡 Key Insights
+
+## 📌 Customers on month-to-month contracts are at the highest risk of churning.
+## 📌 Providing tech support, online security, and other services can enhance customer satisfaction and reduce churn.
+## 📌 Tenure plays a major role in customer retention; customers who stay longer are less likely to churn.
+## 📌 Senior citizens require special attention in retention strategies.
+## 📌 Offering annual or long-term contracts can improve customer loyalty.
