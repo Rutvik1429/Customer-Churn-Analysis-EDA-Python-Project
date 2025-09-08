@@ -55,4 +55,32 @@ plt.show()
 ```
 ![Churn distribution](https://github.com/Rutvik1429/Customer-Churn-Analysis-EDA-Python-Project/blob/main/visual_plot/Percentage%20of%20Churned%20Customers.png)
 
+From the pie chart visualization, it was observed that 25.54% of customers have churned, while the remaining are still active.
+This indicates that customer attrition is significant and requires attention.
+
+## 2️⃣ Tenure and Total Charges
+```python
+# Set the size of the plot (width=8 inches, height=4 inches)
+plt.figure(figsize=(8, 4))
+
+# Create a histogram to show the distribution of 'tenure'
+# - x: 'tenure' values of customers
+# - data: the dataset 'df'
+# - bins: number of bins set to 72 for detailed distribution
+# - hue: 'Churn' to differentiate churned vs non-churned customers
+sns.histplot(x="tenure", data=df, bins=72, hue="Churn")
+
+# Add a title to the plot to explain what it represents
+plt.title("Churned by Tenure")
+
+# Save the plot as a high-resolution PNG image
+# - dpi=2000 ensures very sharp output
+# - bbox_inches='tight' removes extra whitespace
+plt.savefig("Churned by Tenure.png", dpi=2000, bbox_inches="tight")
+
+# Display the plot on the screen
+plt.show()
+```
+![Tenure and Total Charges](https://github.com/Rutvik1429/Customer-Churn-Analysis-EDA-Python-Project/blob/main/visual_plot/Churned%20by%20Tenure.png)
+
 
